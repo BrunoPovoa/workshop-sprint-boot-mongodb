@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.nelioprofessorruim.workshop.mongo.Repository.UserRepository;
 import com.nelioprofessorruim.workshop.mongo.domain.User;
+import com.nelioprofessorruim.workshop.mongo.dto.UserDTO;
 import com.nelioprofessorruim.workshop.mongo.services.exception.ObjectNotFoundException;
 
 @Service
@@ -27,5 +28,9 @@ public class UserService {
 	
 	public User insert(User obj) {
 		return repo.insert(obj);
+	}
+	
+	public User fromDTO(UserDTO objDto) {
+		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
 	}
 }
